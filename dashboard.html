@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            display: flex;
+            background: #f5f6fa;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #ff4f81;
+            color: white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #666;
+        }
+
+        .card p {
+            font-size: 28px;
+            margin-top: 10px;
+            color: #ff4f81;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>Women Health</h2>
+
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="periods.html">Period Tracker</a></li>
+            <li><a href="symptoms.html">Symptoms Tracker</a></li>
+            <li><a href="pregnancy.html">Pregnancy Tracker</a></li>
+            <li><a href="reports.html">Reports</a></li>
+            <li><a href="login.html">Logout</a></li>
+        </ul>
+
+    </div>
+
+    <div class="main">
+
+        <div class="header">
+            <h1>Welcome User 👋</h1>
+            <p>Track your health and wellness.</p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>BMI</h3>
+                <p>22.5</p>
+            </div>
+
+            <div class="card">
+                <h3>PCOS Risk</h3>
+                <p>Low</p>
+            </div>
+
+            <div class="card">
+                <h3>Pregnancy Week</h3>
+                <p>12</p>
+            </div>
+
+            <div class="card">
+                <h3>Period Status</h3>
+                <p>Regular</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
