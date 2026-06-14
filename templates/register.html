@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Create Account</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ff758c, #ff7eb3);
+        }
+
+        .container {
+            width: 400px;
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .logo h1 {
+            color: #ff4f81;
+            font-size: 28px;
+        }
+
+        .logo p {
+            color: gray;
+            margin-top: 5px;
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            font-size: 15px;
+        }
+
+        .input-group input:focus {
+            outline: none;
+            border-color: #ff4f81;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #ff4f81;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #e63e70;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #ff4f81;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="logo">
+            <h1>Create Account</h1>
+            <p>Join Women Health Tracker</p>
+        </div>
+
+        <form method="POST" action="{{ url_for('register') }}">
+
+          <div class="input-group">
+           <label>Full Name</label>
+           <input type="text" name="name" placeholder="Enter Full Name" required>
+          </div>
+
+         <div class="input-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="Enter Email" required>
+         </div>
+
+         <div class="input-group">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Enter Password" required>
+         </div>
+
+         <div class="input-group">
+          <label>Confirm Password</label>
+          <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+        </div>
+
+        {% if msg %}
+          <p style="color:red; text-align:center; margin-bottom:10px;">
+          {{ msg }}
+          </p>
+        {% endif %}
+ 
+        <button type="submit" class="btn">Register</button>
+
+</form>
+
+        <div class="footer">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Login</a>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

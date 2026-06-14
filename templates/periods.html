@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Period Tracker</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff4f81;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            border: none;
+            background: #ff4f81;
+            color: white;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Period Tracker</h1>
+
+        <form method="POST" action="{{ url_for('periods') }}">
+
+
+        <div class="input-group">
+          <label>Last Period Date</label>
+          <input type="date" name="last_period" required>
+        </div>
+
+        <div class="input-group">
+          <label>Cycle Length (Days)</label>
+          <input type="number" name="cycle_length" min="1" required>
+        </div>
+
+        {% if msg %}
+          <p style="color:green; text-align:center; margin-bottom:15px;">
+          {{ msg }}
+          </p>
+          {% endif %}
+
+        <button type="submit">
+         Save Period Data
+        </button>
+
+
+</form>
+
+<br>
+
+<h2 style="color:#ff4f81;">Period History</h2>
+
+{% if history %}
+
+<table style="width:100%; margin-top:15px; border-collapse:collapse;">
+    <tr style="background:#ff4f81; color:white;">
+        <th style="padding:10px;">Last Period</th>
+        <th style="padding:10px;">Cycle Length</th>
+    </tr>
+
+{% for item in history %}
+<tr>
+    <td style="padding:10px; border:1px solid #ddd;">
+        {{ item.last_period }}
+    </td>
+    <td style="padding:10px; border:1px solid #ddd;">
+        {{ item.cycle_length }} days
+    </td>
+</tr>
+{% endfor %}
+
+
+</table>
+{% else %}
+<p>No period records found.</p>
+{% endif %}
+
+        
+
+    </div>
+
+</body>
+
+</html>

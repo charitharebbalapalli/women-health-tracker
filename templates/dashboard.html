@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background: #f5f6fa;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #ff4f81;
+            color:white;
+            padding: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px;
+            margin: 10px 0;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .sidebar a {
+            text-decoration: none;
+            color: white;
+            display: block;
+        }
+
+
+        .main {
+            flex: 1;
+            padding: 30px;
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #666;
+        }
+
+        .card p {
+            font-size: 28px;
+            margin-top: 10px;
+            color: #ff4f81;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="sidebar">
+
+        <h2>Women Health</h2>
+
+        <ul>
+          <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+          <li><a href="{{ url_for('periods') }}">Period Tracker</a></li>
+          <li><a href="{{ url_for('symptoms') }}">Symptoms Tracker</a></li>
+          <li><a href="{{ url_for('pregnancy') }}">Pregnancy Tracker</a></li>
+          <li><a href="{{ url_for('reports') }}">Reports</a></li>
+          <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        </ul>
+
+
+        </div>
+
+       <div class="main">
+
+
+        <div class="header">
+          <h1>Welcome {{ name }} 👋</h1>
+          <p>Track your health and wellness.</p>
+        </div>
+
+        <div class="cards">
+
+    <!-- PERIOD CARD -->
+       <div class="card">
+          <h3>Latest Period Record</h3>
+
+          {% if active_mode == "period" %}
+            {% if period %}
+                <p>{{ period.last_period }}</p>
+            {% else %}
+                <p>No Record</p>
+            {% endif %}
+         {% else %}
+                <p style="color:gray;">Disabled (Pregnancy Mode)</p>
+         {% endif %}
+       </div>
+
+    <!-- PCOS CARD -->
+    <div class="card">
+    <h3>PCOS Status</h3>
+
+    {% if symptoms %}
+        <p>
+            Acne: {{ 'Yes' if symptoms.acne else 'No' }}<br>
+            Weight Gain: {{ 'Yes' if symptoms.weight_gain else 'No' }}<br>
+            Irregular Cycle: {{ 'Yes' if symptoms.irregular_cycle else 'No' }}<br>
+            <strong>PCOS Risk: {{ pcos_risk }}</strong>
+        </p>
+    {% else %}
+        <p>No Data</p>
+    {% endif %}
+   </div>
+
+    <!-- PREGNANCY CARD -->
+    <div class="card">
+        <h3>Pregnancy Status</h3>
+
+        {% if active_mode == "pregnancy" %}
+            <p>
+                Week: {{ pregnancy.week if pregnancy else "N/A" }}<br>
+                Status: Active Pregnancy
+            </p>
+        {% else %}
+            <p style="color:gray;">Not pregnant</p>
+        {% endif %}
+    </div>
+
+    <!-- HEALTH STATUS -->
+    <div class="card">
+        <h3>Health Status</h3>
+
+        {% if active_mode == "pregnancy" %}
+            <p>Pregnancy Monitoring Mode</p>
+        {% else %}
+            <p>Cycle Tracking Mode</p>
+        {% endif %}
+    </div>
+
+</div>
+
+    
+   </div>
+</div>
+</body>
+
+</html>

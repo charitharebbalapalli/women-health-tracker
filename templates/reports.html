@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Reports</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Segoe UI, sans-serif;
+        }
+
+        body {
+            background: #f5f6fa;
+            padding: 30px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #ff4f81;
+        }
+
+        .report-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 {
+            color: #666;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            font-size: 28px;
+            color: #ff4f81;
+            font-weight: bold;
+        }
+
+        .summary {
+            margin-top: 30px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .summary h2 {
+            color: #ff4f81;
+            margin-bottom: 15px;
+        }
+
+        .summary ul {
+            padding-left: 20px;
+        }
+
+        .summary li {
+            margin-bottom: 10px;
+        }
+
+        .download-btn {
+            margin-top: 20px;
+            width: 100%;
+            padding: 15px;
+            border: none;
+            background: #ff4f81;
+            color: white;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .download-btn:hover {
+            background: #e63e70;
+        }
+
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #ff4f81;
+            color: white;
+            padding: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="report-container">
+
+        <div class="header">
+            <h1>Health Reports</h1>
+            <p>Women Health Tracker Summary</p>
+        </div>
+
+        <div class="cards">
+
+        
+
+            <div class="card">
+                <h3>PCOS Risk</h3>
+                <p>{{pcos_risk}}</p>
+                
+            </div>
+
+            <!-- ================= PREGNANCY CARDS ================= -->
+
+         {% if active_mode == "pregnancy" %}
+
+         <div class="card">
+          <h3>Pregnancy Week</h3>
+          <p>{{ pregnancy_week }}</p>
+         </div>
+
+         <div class="card">
+          <h3>Expected Due Date</h3>
+          <p>{{ due_date }}</p>
+         </div>
+
+         <div class="card">
+          <h3>Pregnancy Status</h3>
+          <p>Active Pregnancy Tracking</p>
+         </div>
+
+        {% else %}
+
+        <div class="card">
+         <h3>Pregnancy Week</h3>
+         <p>No Data</p>
+        </div>
+
+        <div class="card">
+         <h3>Expected Due Date</h3>
+         <p>No Data</p>
+        </div>
+
+        <div class="card">
+         <h3>Pregnancy Status</h3>
+         <p>Not Pregnant</p>
+        </div>
+
+        {% endif %}
+            <div class="card">
+                <h3>Period Status</h3>
+                <p>{{ period_status }}</p>
+            </div>
+
+        </div>
+
+       <div class="summary">
+
+    <h2>Health Summary</h2>
+
+     <ul>
+       <li>Total Period Records: {{ periods|length }}</li>
+       <li>Total Symptom Records: {{ symptoms|length }}</li>
+
+       {% if active_mode == "pregnancy" %}
+
+        <li>Pregnancy Records: Active</li>
+        <li>Pregnancy Week: {{ pregnancy_week }}</li>
+        <li>Expected Due Date: {{ due_date }}</li>
+
+        <li>Period Tracking: Disabled (Pregnancy Mode)</li>
+        <li>PCOS Risk: Not applicable during pregnancy</li>
+
+        <li>Focus: Prenatal care, nutrition, and fetal development</li>
+
+       {% elif active_mode == "period" %}
+
+        <li>Pregnancy Records: Not Active</li>
+        <li>Period Status: {{ period_status }}</li>
+        <li>PCOS Risk: {{ pcos_risk }}</li>
+
+        <li>Focus: Cycle tracking and hormonal health</li>
+
+       {% else %}
+
+        <li>Pregnancy Records: No Data</li>
+        <li>Period Status: No Data</li>
+        <li>PCOS Risk: No Data</li>
+
+       {% endif %}
+
+        <li>Maintain healthy diet and hydration.</li>
+        <li>Follow regular medical checkups.</li>
+      </ul>
+    <h2 style="margin-top:20px;">Personalized Health Tips</h2>
+
+    <ul>
+        {% for tip in tips %}
+            <li>{{ tip }}</li>
+        {% endfor %}
+    </ul>
+
+    <button class="download-btn" disabled>
+        Download Report (Coming Soon)
+    </button>
+
+</div>
+    </div>
+
+</body>
+
+</html>
