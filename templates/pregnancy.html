@@ -68,6 +68,7 @@
 
         <h1>Pregnancy Tracker</h1>
 
+<<<<<<< HEAD
         <form method="POST" action="{{ url_for('pregnancy') }}">
 
             <div class="input-group">
@@ -81,6 +82,24 @@
             {{ msg }}
                 </p>
             {% endif %}
+=======
+        <form>
+
+            <div class="input-group">
+                <label>Last Period Date</label>
+                <input type="date" name="last_period">
+            </div>
+
+            <div class="input-group">
+                <label>Due Date</label>
+                <input type="date" name="due_date">
+            </div>
+
+            <div class="input-group">
+                <label>Pregnancy Week</label>
+                <input type="number" name="week">
+            </div>
+>>>>>>> 56dab72efd3c75dfc876bdec4523a5b77689f531
 
             <button type="submit">
                 Save Pregnancy Data
@@ -92,4 +111,8 @@
 
 </body>
 
+<<<<<<< HEAD
 </html>  
+=======
+</html>
+>>>>>>> 56dab72efd3c75dfc876bdec4523a5b77689f531

@@ -1,4 +1,8 @@
 Flask==2.3.3
 Flask-MySQLdb==1.0.1
+<<<<<<< HEAD
 mysqlclient
+=======
+MySQLdb-python==1.2.5
+>>>>>>> 56dab72efd3c75dfc876bdec4523a5b77689f531
 Werkzeug==2.3.7

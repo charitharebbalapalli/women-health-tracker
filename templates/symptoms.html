@@ -68,6 +68,7 @@
 
         <h1>Symptoms Tracker</h1>
 
+<<<<<<< HEAD
         <form method="POST" action="{{ url_for('symptoms') }}">
 
          <div class="input-group">
@@ -102,6 +103,39 @@
         </button>
 
     </form>
+=======
+        <form>
+
+            <div class="input-group">
+                <label>Weight Gain</label>
+                <select name="weight_gain">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Acne</label>
+                <select name="acne">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label>Irregular Cycle</label>
+                <select name="irregular_cycle">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </select>
+            </div>
+
+            <button type="submit">
+                Save Symptoms
+            </button>
+
+        </form>
+>>>>>>> 56dab72efd3c75dfc876bdec4523a5b77689f531
 
     </div>
 

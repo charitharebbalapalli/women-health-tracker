@@ -68,6 +68,7 @@
 
         <h1>Period Tracker</h1>
 
+<<<<<<< HEAD
         <form method="POST" action="{{ url_for('periods') }}">
 
 
@@ -124,6 +125,30 @@
 {% endif %}
 
         
+=======
+        <form>
+
+            <div class="input-group">
+                <label>Last Period Date</label>
+                <input type="date" name="last_period">
+            </div>
+
+            <div class="input-group">
+                <label>Cycle Length (Days)</label>
+                <input type="number" name="cycle_length">
+            </div>
+
+            <div class="input-group">
+                <label>Next Expected Period</label>
+                <input type="date" name="next_period">
+            </div>
+
+            <button type="submit">
+                Save Period Data
+            </button>
+
+        </form>
+>>>>>>> 56dab72efd3c75dfc876bdec4523a5b77689f531
 
     </div>
 
